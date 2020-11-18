@@ -7,7 +7,8 @@ var defaultOptions = {
     tocWrapperClass: 'toc',
     tocLevelWrapperClass: 'toc-level',
     anchorIdPrefix: 'h-',
-    reverseLink: false
+    reverseLink: false,
+    maxDepth: 2
 };
 
 module.exports = function (md, options) {
@@ -89,8 +90,10 @@ module.exports = function (md, options) {
 
         for (var i = 0; i < headingInfos.length; i++) {
             var hInfo = headingInfos[i];
-            var levelDiff = hInfo.numbering.length - previousLevel;
+            if (hInfo.numbering.length > options.maxDepth)
+                continue;
 
+            var levelDiff = hInfo.numbering.length - previousLevel;
             if (levelDiff > 0) {
                 for (var _ = 0; _ < levelDiff; _++) {
                     results.push('<ul class="' + options.tocLevelWrapperClass + '">');
