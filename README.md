@@ -100,6 +100,12 @@ Value of whether the link in the anchor of the heading points to TOC.
 
 If the value is `true`, result is `<h?><a href="#toc">...</a>...</h?>`.
 
+#### `maxDepth` (integer)
+
+default: 2
+
+Maximum depth used for displaying the body of TOC
+
 ## Test
 
 ```
