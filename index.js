@@ -78,9 +78,9 @@ module.exports = function (md, options) {
 
     md.renderer.rules.toc_open = function (tokens, index) {
         var tmp = '<div id="' + options.tocId + '" class="' + options.tocWrapperClass + '">';
-        //if( options.tocTitle )
+        if( options.tocTitle )
             return tmp + '<h3>' + options.tocTitle + '</h3>';
-        //return tmp;
+        return tmp;
     }
 
     md.renderer.rules.toc_close = function (token, index) {
